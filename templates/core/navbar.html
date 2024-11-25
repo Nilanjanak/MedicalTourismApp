@@ -1,0 +1,81 @@
+{% load static %}
+<header>
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Flower Bouquets Store Logo"></a>
+        </div>
+
+        <!-- Navigation links -->
+        <nav>
+            <ul>
+                <!--Adding the category list to a dropdown menu-->
+                <li class="dropdown">
+
+                    <a href="#" class="dropbtn">Bouquets</a>
+                    <div class="dropdown-content">
+                        <a href="product-page/rose.html">Roses</a>
+                        <a href="product-page/tulip.html">Tulips</a>
+                        <a href="product-page/lilies.html">Lilies</a>
+                        <a href="product-page/orchids.html">Orchids</a>
+                        <a href="product-page/mixed.html">Mixed Bouquets</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Occassion</a>
+                    <div class="dropdown-content">
+                        <a href="product-page/wedding.html">Wedding</a>
+                        <a href="product-page/birthday.html">Birthday</a>
+                        <a href="product-page/anniversary.html">Anniversary</a>
+                        <a href="product-page/congratulations.html">Congratulations</a>
+                        <a href="product-page/sorry.html">Sorry</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Gifts</a>
+                    <div class="dropdown-content">
+                        <a href="product-page/her.html">Gift for Her</a>
+                        <a href="product-page/him.html">Gift for Him</a>
+                        <a href="product-page/mom.html">Gift for Mom</a>
+                        <a href="product-page/dad.html">Gift for Dad</a>
+                        <a href="product-page/girlfriend.html">Gift for Girlfriend</a>
+                        <a href="product-page/boyfriend.html">Gift for Boyfriend</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Cities</a>
+                    <div class="dropdown-content">
+                        <a href="product-page/kolkata.html">Kolkata</a>
+                        <a href="product-page/delhi.html">Delhi</a>
+                        <a href="product-page/mumbai.html">Mumbai</a>
+                        <a href="product-page/bangalore.html">Bangalore</a>
+                        <a href="product-page/hyderabad.html">Hyderabad</a>
+                        <a href="product-page/cities.html">All Cities</a>
+
+                    </div>
+                </li>
+                <li><a href="combo.html">Combos</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for bouquets...">
+            <button type="submit">Search</button>
+        </div>
+
+        <!--Cart button-->
+        <button class="cart-btn">
+            <a href="cart.html"><img src="images/cart-icon.png" alt="Cart Icon"></a>
+            
+            <span id="cart-count">0</span> <!-- This will dynamically show the number of items -->
+        </button>
+
+        <!-- Login button -->
+        <div class="login-btn">
+            <a href="login.html">Login/SignUp</a>
+        </div>
+    </div>
+</header>
