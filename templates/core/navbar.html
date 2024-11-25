@@ -1,9 +1,13 @@
+{% extends "base.html" %}
 {% load static %}
+
+{% block content %}
+
 <header>
     <div class="header-container">
         <!-- Logo -->
         <div class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="Flower Bouquets Store Logo"></a>
+            <a href="{% url 'shop:product_list' %}"><img src="{% static 'images/logo.png' %}" alt="Flower Bouquets Store Logo"></a>
         </div>
 
         <!-- Navigation links -->
@@ -11,12 +15,11 @@
             <ul>
                 <!--Adding the category list to a dropdown menu-->
                 <li class="dropdown">
-
                     <a href="#" class="dropbtn">Bouquets</a>
                     <div class="dropdown-content">
                         <a href="product-page/rose.html">Roses</a>
                         <a href="product-page/tulip.html">Tulips</a>
-                        <a href="product-page/lilies.html">Lilies</a>
+                        <a href="#">Lilies</a>
                         <a href="product-page/orchids.html">Orchids</a>
                         <a href="product-page/mixed.html">Mixed Bouquets</a>
                     </div>
@@ -51,12 +54,11 @@
                         <a href="product-page/bangalore.html">Bangalore</a>
                         <a href="product-page/hyderabad.html">Hyderabad</a>
                         <a href="product-page/cities.html">All Cities</a>
-
                     </div>
                 </li>
                 <li><a href="combo.html">Combos</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="{% url 'core:about' %}">About Us</a></li>
+                <li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
             </ul>
         </nav>
 
@@ -68,14 +70,22 @@
 
         <!--Cart button-->
         <button class="cart-btn">
-            <a href="cart.html"><img src="images/cart-icon.png" alt="Cart Icon"></a>
+            <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'images/cart-icon.png' %}" alt="Cart Icon"></a>
             
             <span id="cart-count">0</span> <!-- This will dynamically show the number of items -->
         </button>
 
         <!-- Login button -->
         <div class="login-btn">
-            <a href="login.html">Login/SignUp</a>
+            {% if user.is_authenticated %}
+                <p>Hi, {{ user.username }}!</p>
+                <a href="{% url 'accounts:logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'accounts:login' %}">Login/sgnup</a>
+                <!-- <a href="{% url 'accounts:register' %}">Sign Up</a> -->
+            {% endif %}
         </div>
     </div>
 </header>
+
+{% endblock content %}

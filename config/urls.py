@@ -30,7 +30,7 @@ urlpatterns = [
     
     path("accounts/", include("django.contrib.auth.urls")),  # new
     path("", TemplateView.as_view(template_name="shop/list.html"), name="home"),
-    
+
 ]
 
 

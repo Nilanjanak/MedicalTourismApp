@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% include 'core/navbar.html' %}
+
+
+
+<div class="about-section">
+    <h1>About Flower Bouquets</h1>
+    <p>We are a premium online flower shop delivering a wide variety of floral arrangements to your doorsteps.</p>
+</div>
+
+<div class="about-content">
+    <div class="content-section">
+        <h2>Our Story</h2>
+        <p>Flower Bouquets was founded in 2010 with the mission of spreading happiness through beautiful flower arrangements. Our goal is to provide fresh, high-quality bouquets that convey emotions and make moments special.</p>
+    </div>
+    
+    <div class="content-section">
+        <h2>Why Choose Us</h2>
+        <ul>
+            <li>Fresh flowers guaranteed</li>
+            <li>Same-day delivery</li>
+            <li>Unique and customizable arrangements</li>
+            <li>Eco-friendly packaging</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="{% static 'images/team1.jpg' %}" alt="Team Member 1">
+                <h3>Jane Doe</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/team2.jpg' %}" alt="Team Member 2">
+                <h3>Sarah Johnson</h3>
+                <p>Lead Florist</p>
+            </div>
+            <div class="team-member">
+                <img src="{% static 'images/team3.jpg' %}" alt="Team Member 3">
+                <h3>Robert James</h3>
+                <p>Operations Manager</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="scrollTopBtn" style="display:none;position:fixed;bottom:30px;right:30px;padding:10px 20px;background-color:#e91e63;color:white;border:none;cursor:pointer;border-radius:5px;">Top</button>
+{% endblock content %}

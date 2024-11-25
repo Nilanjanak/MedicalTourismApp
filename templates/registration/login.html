@@ -3,10 +3,83 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Log In</button>
-</form>
+
+<style>
+  /* General styles for the login form */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Add a custom font for the container */
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+/* Styling for the form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Styling for the input fields */
+.login-form input {
+    width: 100%;
+    padding: 15px; /* Increased padding for larger fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem; /* Increased font size */
+    font-family: 'Roboto', sans-serif; /* Custom font for the fields */
+}
+
+.login-form input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Styling for the submit button */
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem; /* Increased button font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Roboto', sans-serif; /* Match font to other elements */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Add some responsiveness */
+@media (max-width: 500px) {
+    .login-container {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+
+</style>
+
+<div class="login-container">
+    <h2>Log In</h2>
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn-submit">Log In</button>
+    </form>
+</div>
+
+
 {% endblock %}
