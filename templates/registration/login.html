@@ -77,7 +77,11 @@
     <form method="post" class="login-form">
         {% csrf_token %}
         {{ form }}
+        <p>Forget Password ?<a href="{% url 'password_reset' %}">Password Reset</a></p>
         <button type="submit" class="btn-submit">Log In</button>
+
+        <a href="{% url 'accounts:signup' %}">Sign Up</a>
+
     </form>
 </div>
 

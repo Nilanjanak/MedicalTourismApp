@@ -3,89 +3,186 @@
 
 {% block content %}
 
-<header>
-    <div class="header-container">
-        <!-- Logo -->
-        <div class="logo">
-            <a href="{% url 'shop:product_list' %}"><img src="{% static 'images/logo.png' %}" alt="Flower Bouquets Store Logo"></a>
-        </div>
+                <!-- <li><a href="{% url 'about' %}">About</a></li> -->
+                <!-- <li><a href="{% url 'contact' %}">Contact</a></li> -->
 
-        <!-- Navigation links -->
-        <nav>
-            <ul>
-                <!--Adding the category list to a dropdown menu-->
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Bouquets</a>
-                    <div class="dropdown-content">
-                        <a href="product-page/rose.html">Roses</a>
-                        <a href="product-page/tulip.html">Tulips</a>
-                        <a href="#">Lilies</a>
-                        <a href="product-page/orchids.html">Orchids</a>
-                        <a href="product-page/mixed.html">Mixed Bouquets</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Occassion</a>
-                    <div class="dropdown-content">
-                        <a href="product-page/wedding.html">Wedding</a>
-                        <a href="product-page/birthday.html">Birthday</a>
-                        <a href="product-page/anniversary.html">Anniversary</a>
-                        <a href="product-page/congratulations.html">Congratulations</a>
-                        <a href="product-page/sorry.html">Sorry</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Gifts</a>
-                    <div class="dropdown-content">
-                        <a href="product-page/her.html">Gift for Her</a>
-                        <a href="product-page/him.html">Gift for Him</a>
-                        <a href="product-page/mom.html">Gift for Mom</a>
-                        <a href="product-page/dad.html">Gift for Dad</a>
-                        <a href="product-page/girlfriend.html">Gift for Girlfriend</a>
-                        <a href="product-page/boyfriend.html">Gift for Boyfriend</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Cities</a>
-                    <div class="dropdown-content">
-                        <a href="product-page/kolkata.html">Kolkata</a>
-                        <a href="product-page/delhi.html">Delhi</a>
-                        <a href="product-page/mumbai.html">Mumbai</a>
-                        <a href="product-page/bangalore.html">Bangalore</a>
-                        <a href="product-page/hyderabad.html">Hyderabad</a>
-                        <a href="product-page/cities.html">All Cities</a>
-                    </div>
-                </li>
-                <li><a href="combo.html">Combos</a></li>
-                <li><a href="{% url 'core:about' %}">About Us</a></li>
-                <li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
-            </ul>
-        </nav>
+<style>
+    /* General navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
 
-        <!-- Search bar -->
-        <div class="search-bar">
-            <input type="text" placeholder="Search for bouquets...">
-            <button type="submit">Search</button>
-        </div>
+/* Logo styling */
+.logo img {
+  height: 50px;
+  display: inline-block;
+}
 
-        <!--Cart button-->
-        <button class="cart-btn">
-            <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'images/cart-icon.png' %}" alt="Cart Icon"></a>
-            
-            <span id="cart-count">0</span> <!-- This will dynamically show the number of items -->
-        </button>
+/* Search bar styling */
+.search-bar {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
 
-        <!-- Login button -->
-        <div class="login-btn">
-            {% if user.is_authenticated %}
-                <p>Hi, {{ user.username }}!</p>
-                <a href="{% url 'accounts:logout' %}">Logout</a>
-            {% else %}
-                <a href="{% url 'accounts:login' %}">Login/sgnup</a>
-                <!-- <a href="{% url 'accounts:register' %}">Sign Up</a> -->
-            {% endif %}
-        </div>
+.search-bar input[type="text"] {
+  width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-bar button:hover {
+  background-color: #2980b9;
+}
+
+/* Navigation menu styling */
+.nav-menu {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  position: relative;
+  margin: 0 10px;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+.nav-menu a:hover {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+/* Dropdown menu styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: left;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+/* User section styling */
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.user-section .user-info {
+  color: white;
+  text-align: right;
+}
+
+.user-section .login-btn {
+  background-color: #e74c3c;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.user-section .login-btn:hover {
+  background-color: #c0392b;
+}
+
+</style>
+
+
+<nav class="navbar">
+    <div class="logo">
+      <a href="{% url 'shop:product_list' %}">
+        <img src="{% static 'img/logo.png' %}" alt="Logo">
+      </a>
     </div>
-</header>
-
-{% endblock content %}
+  
+    <div class="search-bar">
+      <form action="{% url 'shop:search_results' %}" method="get">
+        <input name="q" type="text" placeholder="Search products...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  
+    <ul class="nav-menu">
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Categories</a>
+        <div class="dropdown-content">
+          <a href="{% url 'shop:product_list' %}">All</a>
+          {% for c in categories %}
+            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+          {% endfor %}
+        </div>
+      </li>
+      <li><a href="{% url 'shop:product_list' %}">Products</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  
+    <div class="user-section">
+      {% if user.is_authenticated %}
+        <div class="user-info">
+          <p>Hi {{ user.username }}!</p>
+          <a href="{% url 'password_change' %}">Password Change</a>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+          </form>
+        </div>
+      {% else %}
+        <a href="{% url 'login' %}" class="login-btn">Log In</a>
+      {% endif %}
+    </div>
+  </nav>
+  {% endblock content %}

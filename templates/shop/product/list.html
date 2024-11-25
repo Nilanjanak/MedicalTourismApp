@@ -1,16 +1,107 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
+<!-- {% block title %}
     {% if category %}
         {{ category.name }}
     {% else %}
         Products
     {% endif %}
-{% endblock %}
+{% endblock %} -->
 
 {% block content %}
-    <div id="sidebar">
+
+<style>
+    /* Overall layout */
+#main {
+    width: 100%;
+    padding: 30px 15px;
+    background-color: #f8f8f8;
+}
+
+.product-list h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+/* Grid for products */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    padding: 0 10px;
+}
+
+/* Product item card */
+.product-item {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-item a {
+    text-decoration: none;
+}
+
+/* Product image */
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.product-image:hover {
+    opacity: 0.8;
+}
+
+/* Product name */
+.product-name {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: capitalize;
+    display: block;
+}
+
+/* Product price */
+.product-price {
+    font-size: 1.2rem;
+    color: #e91e63;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .product-list h1 {
+        font-size: 2rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+</style>
+
+
+
+ <!-- navbar section start here -->
+    <!-- <div id="sidebar">
 
         {% if user.is_authenticated %}
         <p>Hi {{ user.username }}!</p>
@@ -21,12 +112,12 @@
         </form>
         {% else %}
         <p>You are not logged in</p>
-        <p><a href="{% url 'password_reset' %}">Password Reset</a></p>
+
         <p><a href="{% url 'login' %}">Log In</a></p>
         {% endif %}
 
         <!-- Search -->
-        <form action="{% url 'shop:search_results' %}" method="get">
+        <!-- <form action="{% url 'shop:search_results' %}" method="get">
             <input name="q" type="text" placeholder="Search...">
           </form>
 
@@ -40,19 +131,24 @@
                 </li>
             {% endfor %}
         </ul>
-    </div>
+    </div> --> 
+
+ <!-- navbar section Ends here -->
 
     <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
-        {% for product in products %}
-            <div class="item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
-                </a>
-                <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-                <br>
-                ${{ product.price }}
-            </div>
-        {% endfor %}
+        <h1>{% if category %}{{ category.name }}{% else %}{% endif %}</h1>
+        <div class="product-grid">
+            {% for product in products %}
+                <div class="product-item">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ product.name }}" class="product-image">
+                    </a>
+                    <div class="product-info">
+                        <a href="{{ product.get_absolute_url }}" class="product-name">{{ product.name }}</a>
+                        <p class="product-price">${{ product.price }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

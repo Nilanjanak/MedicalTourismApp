@@ -2,7 +2,7 @@ from cart.cart import Cart
 from django.shortcuts import render
 from .forms import OrderCreateForm
 from .models import OrderItem
-from .tasks import order_created
+# from .tasks import order_created    #comment out this when you run it on local server
 
 def order_create(request):
     cart = Cart(request)
@@ -19,7 +19,7 @@ def order_create(request):
                 )
             # Clear the cart after saving the order
             cart.clear()
-            order_created.delay(order.id)
+            # order_created.delay(order.id)   #comment out this when you run it on local server
             return render(
                 request,
                 'orders/order/created.html',

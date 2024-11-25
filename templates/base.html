@@ -5,9 +5,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flower Bouquet App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    /* General Navbar Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 15px;
+}
+
+.currency {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.currency .arrow-down {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background-color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropbtn:hover {
+    color: #007bff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    top: 35px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    display: inline;
+}
+
+.nav-menu a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.nav-menu a:hover {
+    color: #007bff;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-right: 20px;
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* User Section */
+.user-section {
+    display: flex;
+    align-items: center;
+}
+
+.user-section .login-btn {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.user-section .login-btn:hover {
+    text-decoration: underline;
+}
+
+.user-section .user-info {
+    margin-right: 20px;
+}
+
+.user-section form button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.user-section form button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-left,
+    .navbar-right {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+</style>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}   
+    
+
+        <header>
+            <nav class="navbar">
+                <div class="navbar-left">
+                    <!-- Logo Section -->
+                    <a href="{% url 'shop:product_list' %}" class="logo">
+                        <img src="{% static 'images/logo.webp' %}" alt="Logo">
+                    </a>
+        
+                    <!-- Currency and Dropdown for Categories -->
+                    <div class="currency">
+                        <span>INR</span>
+                        <i class="arrow-down">▼</i>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="dropbtn">Categories</a>
+                        <div class="dropdown-content">
+                            <a href="{% url 'shop:product_list' %}">All</a>
+                            {% for c in categories %}
+                                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Navigation Links -->
+                <ul class="nav-menu">
+                    <li><a href="{% url 'shop:product_list' %}">Home</a></li>
+                    <li><a href="#">Shop by Occasions</a></li>
+                    <li><a href="#">Floral Decor</a></li>
+                    <li><a href="#">Choose Your City</a></li>
+                </ul>
+        
+                <!-- Search Bar and User Section -->
+                <div class="navbar-right">
+                    <div class="search-bar">
+                        <form action="{% url 'shop:search_results' %}" method="get">
+                            <input name="q" type="text" placeholder="Search...">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+        
+                    <div class="user-section">
+                        {% if user.is_authenticated %}
+                            <div class="user-info">
+                                <p>Hi {{ user.username }}!</p>
+                                <form action="{% url 'logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit">Log Out</button>
+                                </form>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="login-btn">Log In</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>   
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 FlowerBouquet Site</p>
+        </footer>
 </body>
 </html>
