@@ -151,8 +151,16 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'gaurabchoudhary482@gmail.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = 'semx hfqi lqvd mzpc'  # Use environment variables for security
 
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.ScryptPasswordHasher',
+]
 
 
 
 LOGIN_REDIRECT_URL = "/" 
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'

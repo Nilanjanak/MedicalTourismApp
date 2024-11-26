@@ -96,6 +96,81 @@
     }
 }
 
+/* Hero Slider */
+.hero-slider {
+    position: relative;
+    width: 100%; /* Make it responsive */
+    max-width: 1200px; /* Optional: Set maximum width */
+    margin: 0 auto 20px; /* Center the slider and add spacing below */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex-shrink: 0; /* Prevent shrinking */
+    width: 100%; /* Full width of the container */
+}
+
+.slide img {
+    display: block; /* Remove extra spaces */
+    width: 100%; /* Adjust to container width */
+    height: auto; /* Maintain image aspect ratio */
+    max-height: 600px; /* Optional: Limit the height */
+}
+
+/* Slider Controls */
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.slider-controls .prev,
+.slider-controls .next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    pointer-events: auto;
+    transition: background-color 0.3s ease;
+}
+
+.slider-controls .prev:hover,
+.slider-controls .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-slider {
+        border-radius: 5px;
+    }
+
+    .slider-controls .prev,
+    .slider-controls .next {
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .slide img {
+        max-height: 400px; /* Optional: Adjust for smaller screens */
+    }
+}
+
+
 </style>
 
 
@@ -134,6 +209,26 @@
     </div> --> 
 
  <!-- navbar section Ends here -->
+ <div class="hero-slider">
+    <div class="slider-wrapper">
+        <div class="slide active">
+            <img src="{% static 'images/slider1.jpg' %}" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/slider2.jpg' %}" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/slider3.jpg' %}" alt="Slide 3">
+        </div>
+    </div>
+    <div class="slider-controls">
+        <span class="prev" onclick="prevSlide()">&#10094;</span>
+        <span class="next" onclick="nextSlide()">&#10095;</span>
+    </div>
+</div>
+
+
+<!-- List section start -->
 
     <div id="main" class="product-list">
         <h1>{% if category %}{{ category.name }}{% else %}{% endif %}</h1>
@@ -151,4 +246,41 @@
             {% endfor %}
         </div>
     </div>
+
+
+ <script>
+    let currentSlide = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    if (index >= slides.length) currentSlide = 0;
+    if (index < 0) currentSlide = slides.length - 1;
+
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === currentSlide) slide.classList.add('active');
+    });
+}
+
+function nextSlide() {
+    currentSlide++;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
+    currentSlide--;
+    showSlide(currentSlide);
+}
+
+// Auto-slide functionality
+setInterval(() => {
+    nextSlide();
+}, 5000); // Change slide every 5 seconds
+
+// Initialize first slide
+showSlide(currentSlide);
+
+ </script>
+
+
 {% endblock %}

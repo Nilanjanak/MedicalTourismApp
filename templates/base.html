@@ -194,68 +194,431 @@ body {
     }
 }
 
+/* Icons Section */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icons i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    width: 150px;
+    z-index: 10;
+}
+
+.profile-menu a {
+    display: block;
+    padding: 5px 0;
+    text-decoration: none;
+    color: #333;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover {
+    background-color: #f1f1f1;
+}
+
+.profile-menu p {
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+
+.search-bar {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    top: 35px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .icons {
+        margin-top: 10px;
+    }
+}
+
+
+/* Footer Styling */
+
+footer {
+    background-color: #ffffff;  /* White background */
+    padding: 30px 0;
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-left .logo img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.footer-left p {
+    font-size: 14px;
+    color: #777;
+}
+
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin: 5px 0;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.footer-menu a:hover {
+    color: #007bff;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: scale(1.1);
+}
+
+.newsletter h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 250px;
+}
+
+.newsletter button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        padding: 20px 0;
+    }
+
+    .footer-right {
+        margin-top: 20px;
+    }
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-left .logo img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.footer-left p {
+    font-size: 14px;
+    color: #777;
+}
+
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-menu li {
+    margin: 5px 0;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.footer-menu a:hover {
+    color: #007bff;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover img {
+    transform: scale(1.1);
+}
+
+.newsletter h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 250px;
+}
+
+.newsletter button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+        padding: 20px 0;
+    }
+
+    .footer-right {
+        margin-top: 20px;
+    }
+}
+
+
 </style>
 </head>
 <body>
     
 
-        <header>
-            <nav class="navbar">
-                <div class="navbar-left">
-                    <!-- Logo Section -->
-                    <a href="{% url 'shop:product_list' %}" class="logo">
-                        <img src="{% static 'images/logo.webp' %}" alt="Logo">
-                    </a>
-        
-                    <!-- Currency and Dropdown for Categories -->
-                    <div class="currency">
-                        <span>INR</span>
-                        <i class="arrow-down">▼</i>
-                    </div>
-                    <div class="dropdown">
-                        <a href="#" class="dropbtn">Categories</a>
-                        <div class="dropdown-content">
-                            <a href="{% url 'shop:product_list' %}">All</a>
-                            {% for c in categories %}
-                                <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-                            {% endfor %}
-                        </div>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <!-- Logo Section -->
+                <a href="{% url 'shop:product_list' %}" class="logo">
+                    <img src="{% static 'images/Logo.png' %}" alt="Logo">
+                </a>
+    
+                <!-- Currency and Dropdown for Categories -->
+                <div class="currency">
+                    <span>INR</span>
+                    <i class="arrow-down">▼</i>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Categories</button>
+                    <div class="dropdown-content">
+                        <a href="{% url 'shop:product_list' %}">All</a>
+                        {% for c in categories %}
+                            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
-        
-                <!-- Navigation Links -->
-                <ul class="nav-menu">
-                    <li><a href="{% url 'shop:product_list' %}">Home</a></li>
-                    <li><a href="#">Shop by Occasions</a></li>
-                    <li><a href="#">Floral Decor</a></li>
-                    <li><a href="#">Choose Your City</a></li>
-                </ul>
-        
-                <!-- Search Bar and User Section -->
-                <div class="navbar-right">
-                    <div class="search-bar">
-                        <form action="{% url 'shop:search_results' %}" method="get">
-                            <input name="q" type="text" placeholder="Search...">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-        
-                    <div class="user-section">
-                        {% if user.is_authenticated %}
-                            <div class="user-info">
+            </div>
+    
+            <!-- Navigation Links -->
+            <ul class="nav-menu">
+                <li><a href="{% url 'shop:product_list' %}">Home</a></li>
+                <li><a href="#">Shop by Occasions</a></li>
+                <li><a href="#">Floral Decor</a></li>
+                <li><a href="#">Choose Your City</a></li>
+            </ul>
+    
+            <!-- Search, Cart, and Profile Section -->
+            <div class="navbar-right">
+                <div class="icons">
+                    <i class="search-icon" onclick="toggleSearch()">🔍</i>
+                    <a href="{% url 'cart:cart_detail' %}"><i class="cart-icon">🛒</i></a>
+                    <div class="profile">
+                        <i onclick="toggleProfileMenu()">👤</i>
+                        <div class="profile-menu">
+                            {% if user.is_authenticated %}
                                 <p>Hi {{ user.username }}!</p>
+                                <a href="#">Profile Details</a>
                                 <form action="{% url 'logout' %}" method="post">
                                     {% csrf_token %}
                                     <button type="submit">Log Out</button>
                                 </form>
-                            </div>
-                        {% else %}
-                            <a href="{% url 'login' %}" class="login-btn">Log In</a>
-                        {% endif %}
+                            {% else %}
+                                <a href="{% url 'login' %}">Log In</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </nav>
-        </header>
+    
+                <div class="search-bar" id="search-bar">
+                    <form action="{% url 'shop:search_results' %}" method="get">
+                        <input name="q" type="text" placeholder="Search...">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
         
 
     <main>
@@ -265,7 +628,73 @@ body {
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2024 FlowerBouquet Site</p>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <a href="{% url 'shop:product_list' %}" class="logo">
+                        <img src="{% static 'images/FooterLogo.jpg' %}" alt="FlowerApp Logo">
+                    </a>
+                    <p>&copy; 2024 FlowerApp. All Rights Reserved.</p>
+                </div>
+        
+                <div class="footer-center">
+                    <ul class="footer-menu">
+                        <li><a href="{% url 'shop:product_list' %}">Home</a></li>
+                        <li><a href="#">Shop by Occasions</a></li>
+                        <li><a href="#">Floral Decor</a></li>
+                        <li><a href="{% url 'contact:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-right">
+                    <div class="social-media">
+                        <a href="#" class="social-icon"><img src="{% static 'images/Facebook.svg' %}" alt="Facebook"></a>
+                        <a href="#" class="social-icon"><img src="{% static 'images/X_Logo.jpg' %}" alt="Twitter"></a>
+                        <a href="#" class="social-icon"><img src="{% static 'images/Instagram.jpg' %}" alt="Instagram"></a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Subscribe to our Newsletter</h4>
+                        <form action="#" method="post">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </footer>
+
+
+
+
+        <script>function toggleSearch() {
+            const searchBar = document.getElementById('search-bar');
+            if (searchBar.style.display === 'block') {
+                searchBar.style.display = 'none';
+            } else {
+                searchBar.style.display = 'block';
+            }
+        }
+        
+        function toggleProfileMenu() {
+            const profileMenu = document.querySelector('.profile-menu');
+            if (profileMenu.style.display === 'block') {
+                profileMenu.style.display = 'none';
+            } else {
+                profileMenu.style.display = 'block';
+            }
+        }
+        
+        // Close menus when clicking outside
+        document.addEventListener('click', function (event) {
+            const profileMenu = document.querySelector('.profile-menu');
+            const searchBar = document.getElementById('search-bar');
+            if (!event.target.closest('.profile')) {
+                profileMenu.style.display = 'none';
+            }
+            if (!event.target.closest('.search-icon')) {
+                searchBar.style.display = 'none';
+            }
+        });
+        </script>
+        
 </body>
 </html>

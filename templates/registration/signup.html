@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Sign Up{% endblock %}
+
 
 {% block content %}
 
@@ -76,11 +76,16 @@
 
 </style>
 <div class="signup-container">
-    <h2>Sign Up</h2>
+    <h1>Create an account</h1>
+    <p>Please, sign up using the following form:</p>
     <form method="post" class="signup-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn-submit">Sign Up</button>
+        {{ user_form.as_p }}
+        <p><input type="submit" value="Create my account"></p>
     </form>
 </div>
+
+
+
+
 {% endblock %}

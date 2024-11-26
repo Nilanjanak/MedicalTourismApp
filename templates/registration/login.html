@@ -74,16 +74,38 @@
 
 <div class="login-container">
     <h2>Log In</h2>
-    <form method="post" class="login-form">
+    {% if form.errors %}
+    <p>
+        Your username and password didn't match.
+        Please try again.
+    </p>
+    {% else %}
+    <p>Please, use the following form to log-in:</p>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post" class="login-form">
+        {{ form.as_p }}
         {% csrf_token %}
-        {{ form }}
-        <p>Forget Password ?<a href="{% url 'password_reset' %}">Password Reset</a></p>
-        <button type="submit" class="btn-submit">Log In</button>
-
-        <a href="{% url 'accounts:signup' %}">Sign Up</a>
-
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p><input type="submit" value="Log-in"></p>
+        <p>
+            <a href="{% url "password_reset" %}">
+            Forgotten your password?
+            </a>
+        </p>
+        <a href="{% url 'accounts:register' %}">Sign Up</a>
     </form>
+
+
+
+
+
+
 </div>
 
 
 {% endblock %}
+
+
+
+
