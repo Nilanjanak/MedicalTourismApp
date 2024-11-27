@@ -44,3 +44,12 @@ class SearchResultsView(ListView):
             Q(name__icontains="Lily") | Q(category__icontains="Lily")
         )
 
+
+def category_products(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    products = category.products.all()  # Get products related to this category
+    context = {
+        'category': category,
+        'products': products,
+    }
+    return render(request, 'shop/product/category_products.html', context)

@@ -23,7 +23,7 @@ def contact_view(request):
             Email: {contact.email}
             Message: {contact.message}
             """
-            send_mail(subject, message, 'gaurabchoudhary482@gmail.com', ['gaurabchoudhary482@gmail.com'])
+            send_mail(subject, message, 'pappu.s@aalhoglobal.com', ['pappu.s@aalhoglobal.com'])
 
             return render(request,'contact/sucess.html')  # Redirect to a success page
     else:

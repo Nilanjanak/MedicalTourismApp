@@ -38,7 +38,8 @@ def register(request):
 
 @login_required
 def profile_details(request):
-    return render(request, 'registration/profile_details.html')
+    user = request.user
+    return render(request, 'registration/profile_details.html', {'user': user})
 
 @login_required
 def edit_profile(request):
@@ -58,6 +59,6 @@ def edit_profile(request):
         # Update session authentication hash to keep the user logged in after password change
         update_session_auth_hash(request, user)
 
-        return redirect('profile_details')
+        return redirect('/')
     
     return render(request, 'registration/edit_profile.html')

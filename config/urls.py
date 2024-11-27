@@ -28,6 +28,7 @@ urlpatterns = [
     path("about/", include('about.urls', namespace='about')),
     path('', include('shop.urls', namespace='shop')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('core/', include('core.urls', namespace='core')),
     
     path("accounts/", include("django.contrib.auth.urls")),  # new
     path("", TemplateView.as_view(template_name="shop/list.html"), name="home"),

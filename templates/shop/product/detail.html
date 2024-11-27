@@ -176,8 +176,8 @@
         <div class="product-info">
             <h1>{{ product.name }}</h1>
             <h2>
-                <a href="{{ product.category.get_absolute_url }}">
-                    {{ product.category }}
+                <a href="{% url 'shop:category_products' product.category.id %}">
+                    {{ product.category.name }}
                 </a>
             </h2>
             <p class="description">
