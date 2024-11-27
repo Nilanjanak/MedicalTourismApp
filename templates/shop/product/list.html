@@ -125,32 +125,66 @@
 }
 
 /* Slider Controls */
+.hero-slider {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+}
+
 .slider-controls {
     position: absolute;
     top: 50%;
-    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
-    pointer-events: none;
 }
 
 .slider-controls .prev,
 .slider-controls .next {
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    font-size: 24px;
-    cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    pointer-events: auto;
+    user-select: none;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.slider-dots .dot {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.slider-controls .prev:hover,
-.slider-controls .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.slider-dots .dot.active {
+    background-color: #007bff;
 }
 
 /* Responsive Design */
@@ -209,24 +243,46 @@
     </div> --> 
 
  <!-- navbar section Ends here -->
- <div class="hero-slider">
+ <!-- <div class="hero-slider">
     <div class="slider-wrapper">
         <div class="slide active">
             <img src="{% static 'images/Slider1.png' %}" alt="Slide 1">
         </div>
         <div class="slide">
-            <img src="{% static 'images/slider2.jpg' %}" alt="Slide 2">
+            <img src="{% static 'images/Slider2.png' %}" alt="Slide 2">
         </div>
         <div class="slide">
-            <img src="{% static 'images/slider3.jpg' %}" alt="Slide 3">
+            <img src="{% static 'images/Slider3.png' %}" alt="Slide 3">
         </div>
     </div>
     <div class="slider-controls">
         <span class="prev" onclick="prevSlide()">&#10094;</span>
         <span class="next" onclick="nextSlide()">&#10095;</span>
     </div>
-</div>
+</div> -->
 
+<div class="hero-slider">
+    <div class="slider-wrapper">
+        <div class="slide active">
+            <img src="{% static 'images/Slider1.png' %}" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/Slider2.png' %}" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/Slider3.png' %}" alt="Slide 3">
+        </div>
+    </div>
+    <div class="slider-controls">
+        <span class="prev" onclick="prevSlide()">&#10094;</span>
+        <span class="next" onclick="nextSlide()">&#10095;</span>
+    </div>
+    <div class="slider-dots">
+        <span class="dot" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+</div>
 
 <!-- List section start -->
 
@@ -249,36 +305,80 @@
 
 
  <script>
-    let currentSlide = 0;
 
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+// Function to show a specific slide
 function showSlide(index) {
-    const slides = document.querySelectorAll('.slide');
-    if (index >= slides.length) currentSlide = 0;
-    if (index < 0) currentSlide = slides.length - 1;
-
     slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === currentSlide) slide.classList.add('active');
+        slide.style.opacity = i === index ? '1' : '0';
     });
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+    currentSlide = index;
 }
 
+// Show next slide
 function nextSlide() {
-    currentSlide++;
-    showSlide(currentSlide);
+    const nextIndex = (currentSlide + 1) % slides.length;
+    showSlide(nextIndex);
 }
 
+// Show previous slide
 function prevSlide() {
-    currentSlide--;
-    showSlide(currentSlide);
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prevIndex);
 }
 
-// Auto-slide functionality
-setInterval(() => {
-    nextSlide();
-}, 5000); // Change slide every 5 seconds
+// Go to a specific slide
+function goToSlide(index) {
+    showSlide(index);
+}
 
-// Initialize first slide
+// Automatic sliding
+let slideInterval = setInterval(nextSlide, 5000);
+
+// Pause sliding on hover
+const slider = document.querySelector('.hero-slider');
+slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5000));
+
+// Initialize the slider
 showSlide(currentSlide);
+
+//     let currentSlide = 0;
+
+// function showSlide(index) {
+//     const slides = document.querySelectorAll('.slide');
+//     if (index >= slides.length) currentSlide = 0;
+//     if (index < 0) currentSlide = slides.length - 1;
+
+//     slides.forEach((slide, i) => {
+//         slide.classList.remove('active');
+//         if (i === currentSlide) slide.classList.add('active');
+//     });
+// }
+
+// function nextSlide() {
+//     currentSlide++;
+//     showSlide(currentSlide);
+// }
+
+// function prevSlide() {
+//     currentSlide--;
+//     showSlide(currentSlide);
+// }
+
+// // Auto-slide functionality
+// setInterval(() => {
+//     nextSlide();
+// }, 5000); // Change slide every 5 seconds
+
+// // Initialize first slide
+// showSlide(currentSlide);
 
  </script>
 

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     
     'contact.apps.ContactConfig',
+    'about.apps.AboutConfig',
 ]
 
 # AUTH_USER_MODEL = 'accounts.CustomUser'

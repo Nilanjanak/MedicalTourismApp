@@ -1,8 +1,17 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
+# from django.shortcuts import render
 from .forms import LoginForm, UserRegistrationForm
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
+
+
 
 
 def register(request):
@@ -22,3 +31,33 @@ def register(request):
         user_form = UserRegistrationForm()
     
     return render(request, 'registration/signup.html', {'user_form': user_form})
+
+
+
+
+
+@login_required
+def profile_details(request):
+    return render(request, 'registration/profile_details.html')
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.email = request.POST.get('email')
+
+        # If the user provided a new password, update it
+        password = request.POST.get('password')
+        if password:
+            user.set_password(password)
+
+        user.save()
+
+        # Update session authentication hash to keep the user logged in after password change
+        update_session_auth_hash(request, user)
+
+        return redirect('profile_details')
+    
+    return render(request, 'registration/edit_profile.html')
