@@ -573,7 +573,7 @@ footer {
                     <div class="dropdown-content">
                         <a href="{% url 'shop:product_list' %}">All</a>
                         {% for c in categories %}
-                            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                            <a href="{% url 'shop:category_products' c.id %}">{{ c.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
