@@ -53,3 +53,7 @@ def category_products(request, category_id):
         'products': products,
     }
     return render(request, 'shop/product/category_products.html', context)
+
+
+def coming_soon(request):
+    return render(request, 'shop/coming_soon.html')
