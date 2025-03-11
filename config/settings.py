@@ -161,6 +161,8 @@ PASSWORD_HASHERS = [
 ]
 
 
+ALLOWED_HOSTS = ['3.93.150.71', 'localhost', '127.0.0.1']
+
 
 LOGIN_REDIRECT_URL = "/" 
 LOGIN_URL = 'login'
