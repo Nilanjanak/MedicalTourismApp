@@ -4,35 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Bouquet App</title>
+    <title>Medical Tourism App</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
     /* General Navbar Styling */
 body {
+    background-image: url('https://media.istockphoto.com/id/108162808/photo/long-and-dark-hospital-hallway.jpg?s=612x612&w=0&k=20&c=1KwJaCm2u-Gp1HSZ9r_eq2GYoYKJi0O6QvDFrHyIpFY=');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    width: 100%;
+    min-height: 100vh;
 }
 
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
-    padding: 10px 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #6E8E59;
+    padding: 15px 30px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
 }
 
-.navbar-left {
+.navbar-left, .navbar-right {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
+/* Logo */
 .logo img {
     height: 40px;
     margin-right: 15px;
+    border-radius: 5px;
 }
 
+/* Currency Dropdown */
 .currency {
     font-size: 14px;
     margin-right: 10px;
@@ -43,46 +57,7 @@ body {
     margin-left: 5px;
 }
 
-.dropdown {
-    position: relative;
-}
 
-.dropbtn {
-    background-color: #fff;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333;
-}
-
-.dropbtn:hover {
-    color: #007bff;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    top: 35px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    padding: 12px 16px;
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
 
 /* Navigation Menu */
 .nav-menu {
@@ -100,17 +75,20 @@ body {
 .nav-menu a {
     color: #333;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 600;
     padding: 8px 12px;
 }
 
 .nav-menu a:hover {
-    color: #007bff;
+    color: #0b538d;
 }
 
 /* Search Bar */
 .search-bar {
     margin-right: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .search-bar input {
@@ -125,9 +103,10 @@ body {
     padding: 8px 12px;
     font-size: 14px;
     border: none;
-    background-color: #007bff;
+    background-color: #0b538d;
     color: white;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .search-bar button:hover {
@@ -141,7 +120,7 @@ body {
 }
 
 .user-section .login-btn {
-    color: #007bff;
+    color: #0b538d;
     text-decoration: none;
     font-size: 14px;
 }
@@ -163,20 +142,46 @@ body {
 }
 
 .user-section form button:hover {
-    background-color: #007bff;
+    background-color: #0b538d;
     color: white;
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .nav-menu {
+        gap: 10px;
+    }
+
+    .search-bar input {
+        width: 150px;
+    }
+
+    .search-bar button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .user-section form button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Mobile (19:9 & small screens) */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        padding: 10px;
     }
 
-    .navbar-left,
-    .navbar-right {
+    .navbar-left, .navbar-right {
         flex-direction: column;
+        align-items: center;
         width: 100%;
     }
 
@@ -191,6 +196,68 @@ body {
         display: block;
         padding: 10px;
         text-align: center;
+        font-size: 18px;
+    }
+
+    .search-bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .search-bar input {
+        width: 80%;
+        font-size: 14px;
+    }
+
+    .search-bar button {
+        font-size: 14px;
+    }
+
+    .user-section {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .user-section .login-btn {
+        font-size: 16px;
+    }
+
+    .user-section form button {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 8px;
+    }
+
+    .nav-menu a {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .search-bar input {
+        width: 90%;
+    }
+
+    .search-bar button {
+        width: 100%;
+    }
+
+    .user-section .login-btn {
+        font-size: 14px;
+    }
+
+    .user-section form button {
+        font-size: 14px;
+        width: 100%;
     }
 }
 
@@ -201,28 +268,37 @@ body {
     gap: 15px;
 }
 
+/* Ensure icons resize properly */
 .icons i {
     font-size: 20px;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
+.icons i:hover {
+    transform: scale(1.1);
+}
+
+/* Profile Menu */
 .profile-menu {
     display: none;
     position: absolute;
-    right: 0;
+    right: 19px;
+    top: 80px;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    border-radius: 5px;
-    width: 150px;
-    z-index: 10;
+    border-radius: 10px;
+    z-index: 999;
+    min-width: 180px;
 }
 
 .profile-menu a {
     display: block;
-    padding: 5px 0;
+    padding: 8px 0;
     text-decoration: none;
     color: #333;
+    font-size: 14px;
 }
 
 .profile-menu a:hover,
@@ -235,6 +311,7 @@ body {
     font-size: 14px;
 }
 
+/* Search Bar */
 .search-bar {
     display: none;
     position: absolute;
@@ -247,75 +324,139 @@ body {
     z-index: 10;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    top: 35px;
-    z-index: 1;
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .icons i {
+        font-size: 18px;
+    }
+
+    .profile-menu {
+        right: 10px;
+        top: 70px;
+    }
 }
 
-.dropdown:hover .dropdown-content,
-.dropdown-content:hover {
-    display: block;
-}
-
-/* Responsive adjustments */
+/* Mobile (19:9 & small screens) */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        gap: 10px;
-    }
-
     .icons {
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
         margin-top: 10px;
+    }
+
+    .icons i {
+        font-size: 16px;
+    }
+
+    /* Profile Menu Adjustments */
+    .profile-menu {
+        right: 10px;
+        top: 70px;
+        min-width: 160px;
+        text-align: center;
+    }
+
+    .profile-menu a {
+        font-size: 14px;
+    }
+
+    /* Make search bar fullscreen on small devices */
+    .search-bar {
+        top: 60px;
+        right: 10px;
+        width: 90%;
+    }
+
+    .search-bar input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .search-bar button {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    .icons {
+        gap: 8px;
+    }
+
+    .icons i {
+        font-size: 14px;
+    }
+
+    .profile-menu {
+        width: 100%;
+        text-align: center;
+        top: 60px;
+    }
+
+    .search-bar {
+        top: 50px;
+        width: 95%;
+    }
+
+    .search-bar input {
+        font-size: 12px;
+    }
+
+    .search-bar button {
+        font-size: 12px;
     }
 }
 
 
 /* Footer Styling */
-
 footer {
-    background-color: #ffffff;  /* White background */
+    background-color: #ffffff;
     padding: 30px 0;
     text-align: center;
     color: #333;
     font-family: 'Arial', sans-serif;
+    border-radius: 20px 20px 0 0;
 }
 
+/* Footer Layout */
 .footer-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
 }
 
+/* Footer Columns */
 .footer-left, .footer-center, .footer-right {
     flex: 1;
     padding: 10px;
+    min-width: 250px;
 }
 
+/* Left Section */
 .footer-left {
     text-align: left;
 }
 
 .footer-left .logo img {
-    height: 40px;
+    height: 80px;
     margin-bottom: 10px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
-.footer-left p {
-    font-size: 14px;
-    color: #777;
+.footer-left .logo img:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Center Section */
 .footer-center {
     display: flex;
     flex-direction: column;
@@ -323,7 +464,7 @@ footer {
 }
 
 .footer-menu {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -335,20 +476,22 @@ footer {
 .footer-menu a {
     text-decoration: none;
     color: #333;
-    font-size: 14px;
+    font-size: 18px;
     padding: 8px;
 }
 
 .footer-menu a:hover {
-    color: #007bff;
+    color: #0b538d;
 }
 
+/* Right Section */
 .footer-right {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Social Media */
 .social-media {
     margin-bottom: 20px;
 }
@@ -359,15 +502,18 @@ footer {
 }
 
 .social-icon img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .social-icon:hover img {
     transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
+/* Newsletter */
 .newsletter h4 {
     font-size: 16px;
     margin-bottom: 10px;
@@ -377,22 +523,24 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .newsletter input {
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-right: 10px;
-    width: 250px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 250px;
 }
 
 .newsletter button {
     padding: 10px 15px;
-    background-color: #007bff;
+    background-color: #0b538d;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -402,8 +550,8 @@ footer {
     background-color: #0056b3;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive Footer */
+@media (max-width: 1024px) {
     .footer-container {
         flex-direction: column;
         text-align: center;
@@ -413,185 +561,255 @@ footer {
         padding: 20px 0;
     }
 
-    .footer-right {
-        margin-top: 20px;
+    .newsletter form {
+        flex-direction: column;
+    }
+
+    .newsletter input {
+        margin-right: 0;
     }
 }
 
-
-.footer-container {
+/* Contact Bar */
+.contact-bar {
+    /* width: 100%; */
+    background: linear-gradient(to right, #4A90E2, #9013FE);
+    color: white;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.footer-left, .footer-center, .footer-right {
-    flex: 1;
-    padding: 10px;
-}
-
-.footer-left {
+/* Contact Info */
+.contact-info {
+    font-size: 18px;
+    /* flex-grow: 1; */
     text-align: left;
 }
 
-.footer-left .logo img {
-    height: 40px;
-    margin-bottom: 10px;
-}
-
-.footer-left p {
-    font-size: 14px;
-    color: #777;
-}
-
-.footer-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-menu li {
-    margin: 5px 0;
-}
-
-.footer-menu a {
-    text-decoration: none;
+/* Booking Button */
+.book_btn {
+    background-color: #FFD700;
     color: #333;
-    font-size: 14px;
-    padding: 8px;
-}
-
-.footer-menu a:hover {
-    color: #007bff;
-}
-
-.footer-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.social-media {
-    margin-bottom: 20px;
-}
-
-.social-icon {
-    margin: 0 10px;
-    display: inline-block;
-}
-
-.social-icon img {
-    width: 30px;
-    height: 30px;
-    transition: all 0.3s ease;
-}
-
-.social-icon:hover img {
-    transform: scale(1.1);
-}
-
-.newsletter h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.newsletter form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.newsletter input {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: 250px;
-}
-
-.newsletter button {
     padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    font-size: 14px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-.newsletter button:hover {
-    background-color: #0056b3;
+.book_btn:hover {
+    background-color: #FFC107;
 }
 
-/* Responsive Design */
+/* Responsive Contact Bar */
 @media (max-width: 768px) {
-    .footer-container {
+    .contact-bar {
         flex-direction: column;
         text-align: center;
     }
 
-    .footer-left, .footer-center, .footer-right {
-        padding: 20px 0;
-    }
-
-    .footer-right {
-        margin-top: 20px;
+    .book_btn {
+        margin-top: 10px;
     }
 }
+
+/* Fixed Button */
+.fixed-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: white;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+    z-index: 999;
+    text-decoration: none;
+}
+
+.fixed-btn:hover {
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    transform: scale(1.1);
+}
+
+/* Adjust Fixed Button for Mobile */
+@media (max-width: 768px) {
+    .fixed-btn {
+        bottom: 20px;
+        right: 10px;
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+}
+
+
+
+/* Responsive Dropdown */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        min-width: 140px;
+    }
+
+    .dropdown-menu li {
+        padding: 6px 10px;
+    }
+}
+
+/* Dropdown Button */
+.dropdown-toggle {
+    color: #333;
+    cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 0;
+    margin-top: 5px;
+    list-style: none;
+    z-index: 999;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    /* background-color: #0b538d; */
+    /* color: white; */
+    padding: 12px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px 0;
+    margin-top: 5px;
+    list-style: none;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
 
 
 </style>
 </head>
 <body>
     
+    <div class="contact-bar">
+        <a href="{% url 'shop:product_list' %}" class="logo">
+            <img src="{% static 'images/logo3.png' %}" alt="Logo">
+        </a>
+        <div class="contact-info">
+            📞 +91 86975 07057 / +91 96478 88533
+        </div>
+        <button class="book_btn">Book an Appointment</button>
+    </div>
 
     <header>
         <nav class="navbar">
             <div class="navbar-left">
                 <!-- Logo Section -->
                 <a href="{% url 'shop:product_list' %}" class="logo">
-                    <img src="{% static 'images/Logo.png' %}" alt="Logo">
+                    <img src="{% static 'images/logo3.png' %}" alt="Logo">
                 </a>
     
                 <!-- Currency and Dropdown for Categories -->
-                <div class="currency">
+                <!-- <div class="currency">
                     <span>INR</span>
-                    <i class="arrow-down">▼</i>
-                </div>
+                    <i class="arrow-down"></i>
+                </div> -->
+                
                 <div class="dropdown">
-                    <button class="dropbtn">Categories</button>
-                    <div class="dropdown-content">
+                    <a id="categoryDropdownBtn" class="dropbtn" onclick="toggleCategoryDropdown()">
+                        Categories
+                    </a>
+                    <div id="categoryDropdownContent" class="dropdown-content">
                         <a href="{% url 'shop:product_list' %}">All</a>
                         {% for c in categories %}
                             <a href="{% url 'shop:category_products' c.id %}">{{ c.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
+                
             </div>
     
             <!-- Navigation Links -->
             <ul class="nav-menu">
                 <li><a href="{% url 'shop:product_list' %}">Home</a></li>
-                <li><a href="{% url 'shop:coming_soon' %}">Shop by Occasions</a></li>
-                <li><a href="{% url 'shop:coming_soon' %}">Floral Decor</a></li>
-                <li><a href="{% url 'shop:coming_soon' %}">Choose Your City</a></li>
+                <li><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScgTM9gJ6fMReMHYcxTLFyNvDa1_McyAwTVatpqb201kezGXw/viewform?usp=sharing">Contact Us</a></li>
+                <!-- <li><a href="{% url 'shop:product_list' %}">Home</a></li> -->
+                <!-- <li><a href="{% url 'shop:ocassion' %}">Shop by Occasions</a></li>
+                <li><a href="{% url 'shop:relation' %}">Shop by Relation</a></li>
+                <li><a href="{% url 'shop:coming_soon' %}">Floral Decor</a></li> -->
+                <!-- <li><a href="{% url 'shop:coming_soon' %}">Choose Your City</a></li> -->
+                <li class="dropdown">
+                    <a id="cityDropdownBtn" class="dropdown-toggle" onclick="toggleDropdown()">
+                        Choose Your City <span class="caret"></span>
+                    </a>
+                    <ul id="cityDropdownMenu" class="dropdown-menu">
+                        <li><a href="{% url 'shop:coming_soon' %}">Kolkata</a></li>
+                        <li><a href="{% url 'shop:coming_soon' %}">Delhi</a></li>
+                        <li><a href="{% url 'shop:coming_soon' %}">Surat</a></li>
+                        <li><a href="{% url 'shop:coming_soon' %}">Mumbai</a></li>
+                        <li><a href="{% url 'shop:coming_soon' %}">Chennai</a></li>
+                        <li><a href="{% url 'shop:coming_soon' %}">Hyderabad</a></li>
+                    </ul>
+                </li>                                               
             </ul>
     
             <!-- Search, Cart, and Profile Section -->
             <div class="navbar-right">
                 <div class="icons">
                     <i class="search-icon" onclick="toggleSearch()">🔍</i>
-                    <a href="{% url 'cart:cart_detail' %}"><i class="cart-icon">🛒</i></a>
+                    <!-- <a href="{% url 'cart:cart_detail' %}"><i class="cart-icon">🛒</i></a> -->
                     <div class="profile">
                         <i onclick="toggleProfileMenu()">👤</i>
                         <div class="profile-menu">
@@ -600,7 +818,7 @@ footer {
 
                                 <!-- #profile Details section starts here -->
                                 <div class="profile-details-container">
-                                    <h1>Your Profile</h1>
+                                    <!-- <h1>Your Profile</h1> -->
                                     <div class="profile-details">
                                         <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
                                         <p><strong>Email:</strong> {{ user.email }}</p>
@@ -634,7 +852,7 @@ footer {
         </nav>
     </header>
     
-        
+    <a class="fixed-btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfRYjllDg7pyOpuaa75c9gNiJhgPHE5UqsgRoCTwlHwTnJSFg/viewform?usp=sharing">Book an Appointment</a>
 
     <main>
         {% block content %}
@@ -646,71 +864,122 @@ footer {
             <div class="footer-container">
                 <div class="footer-left">
                     <a href="{% url 'shop:product_list' %}" class="logo">
-                        <img src="{% static 'images/FooterLogo.jpg' %}" alt="FlowerApp Logo">
+                        <img src="{% static 'images/logo3.png' %}" alt="MedicalTouristApp Logo">
                     </a>
-                    <p>&copy; 2024 FlowerApp. All Rights Reserved.</p>
                 </div>
         
                 <div class="footer-center">
                     <ul class="footer-menu">
                         <li><a href="{% url 'shop:product_list' %}">Home</a></li>
-                        <li><a href="#">Shop by Occasions</a></li>
-                        <li><a href="#">Floral Decor</a></li>
-                        <li><a href="{% url 'contact:contact' %}">Contact</a></li>
+                        <li><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScgTM9gJ6fMReMHYcxTLFyNvDa1_McyAwTVatpqb201kezGXw/viewform?usp=sharing">Contact Us</a></li>
+                        <li><a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfRYjllDg7pyOpuaa75c9gNiJhgPHE5UqsgRoCTwlHwTnJSFg/viewform?usp=sharing">Book an Appointment</a></li>
                         <li><a href="{% url 'about:about' %}">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-center">
+                    <ul class="footer-menu">
+                        <li><a href="{% url 'shop:privacy_policy' %}">Privacy Policy</a></li>
+                        <!-- <li><a href="{% url 'shop:refund_policy' %}">Refund Policy</a></li> -->
+                        <!-- <li><a href="{% url 'shop:shipping_policy' %}">Shipping Policy</a></li> -->
+                        <li><a href="{% url 'shop:terms_and_conditions' %}">Terms and Conditions</a></li>
                     </ul>
                 </div>
         
                 <div class="footer-right">
                     <div class="social-media">
-                        <a href="#" class="social-icon"><img src="{% static 'images/Facebook.svg' %}" alt="Facebook"></a>
-                        <a href="#" class="social-icon"><img src="{% static 'images/X_Logo.jpg' %}" alt="Twitter"></a>
-                        <a href="#" class="social-icon"><img src="{% static 'images/Instagram.jpg' %}" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/" target="_blank" class="social-icon"><img src="{% static 'images/facebook.svg' %}" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/" target="_blank" class="social-icon"><img src="{% static 'images/instagram.svg' %}" alt="Instagram"></a>
+                        <a href="https://www.x.com/" target="_blank" class="social-icon"><img src="{% static 'images/x.svg' %}" alt="Twitter"></a>
+                        <a href="https://www.linkedin.com/" target="_blank" class="social-icon"><img src="{% static 'images/linkedin.svg' %}" alt="LinkedIn"></a>
                     </div>
-                    <div class="newsletter">
+                    <!-- <div class="newsletter">
                         <h4>Subscribe to our Newsletter</h4>
                         <form action="#" method="post">
                             <input type="email" placeholder="Enter your email" required>
                             <button type="submit">Subscribe</button>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
             </div>
+            <p>&copy; 2024 Medical. All Rights Reserved.</p>
         </footer>
 
 
 
 
-        <script>function toggleSearch() {
-            const searchBar = document.getElementById('search-bar');
-            if (searchBar.style.display === 'block') {
-                searchBar.style.display = 'none';
-            } else {
-                searchBar.style.display = 'block';
-            }
+<script>
+    // Toggle visibility for profile menu
+    function toggleProfileMenu() {
+        const profileMenu = document.querySelector('.profile-menu');
+        profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Toggle visibility for search bar
+    function toggleSearch() {
+        const searchBar = document.getElementById('search-bar');
+        searchBar.style.display = searchBar.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Close menus when clicking outside
+    document.addEventListener('click', function (event) {
+        const profileMenu = document.querySelector('.profile-menu');
+        const searchBar = document.getElementById('search-bar');
+
+        // Profile menu logic
+        if (!event.target.closest('.profile') && profileMenu && profileMenu.style.display === 'block') {
+            profileMenu.style.display = 'none';
         }
-        
-        function toggleProfileMenu() {
-            const profileMenu = document.querySelector('.profile-menu');
-            if (profileMenu.style.display === 'block') {
-                profileMenu.style.display = 'none';
-            } else {
-                profileMenu.style.display = 'block';
-            }
+
+        // Search bar logic
+        if (!event.target.closest('.search-icon') && !event.target.closest('#search-bar') && searchBar && searchBar.style.display === 'block') {
+            searchBar.style.display = 'none';
         }
-        
-        // Close menus when clicking outside
-        document.addEventListener('click', function (event) {
-            const profileMenu = document.querySelector('.profile-menu');
-            const searchBar = document.getElementById('search-bar');
-            if (!event.target.closest('.profile')) {
-                profileMenu.style.display = 'none';
-            }
-            if (!event.target.closest('.search-icon')) {
-                searchBar.style.display = 'none';
-            }
-        });
-        </script>
+    });
+
+    function toggleDropdown() {
+    var dropdownMenu = document.getElementById("cityDropdownMenu");
+    // Toggle the display property between block and none
+    if (dropdownMenu.style.display === "block") {
+        dropdownMenu.style.display = "none";
+    } else {
+        dropdownMenu.style.display = "block";
+    }
+}
+
+// Close the dropdown when clicking outside
+document.addEventListener("click", function(event) {
+    var dropdown = document.getElementById("cityDropdownMenu");
+    var button = document.getElementById("cityDropdownBtn");
+
+    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = "none";
+    }
+});
+
+function toggleCategoryDropdown() {
+    var dropdownContent = document.getElementById("categoryDropdownContent");
+    // Toggle the display property between block and none
+    if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+    } else {
+        dropdownContent.style.display = "block";
+    }
+}
+
+// Close the dropdown when clicking outside
+document.addEventListener("click", function(event) {
+    var dropdownContent = document.getElementById("categoryDropdownContent");
+    var dropdownButton = document.getElementById("categoryDropdownBtn");
+
+    if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) {
+        dropdownContent.style.display = "none";
+    }
+});
+
+
+
+</script>
         
 </body>
 </html>

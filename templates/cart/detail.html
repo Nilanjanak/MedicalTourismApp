@@ -23,7 +23,7 @@
 /* Title Styling */
 h1 {
     font-size: 2.5rem;
-    color: #333;
+    color: #fff;
     text-align: center;
     margin-bottom: 30px;
     font-weight: bold;
@@ -32,13 +32,16 @@ h1 {
 /* Cart Table Styling */
 .cart {
     width: 100%;
+    height: 80%;
     border-collapse: collapse;
     margin-bottom: 40px;
     font-size: 1rem;
+    border-radius: 10px;
 }
 
 .cart th,
 .cart td {
+    font-size: 1.5rem;
     padding: 15px;
     text-align: left;
     vertical-align: middle;
@@ -61,10 +64,10 @@ h1 {
 
 /* Image Styling */
 .cart img {
-    width: 80px;
-    height: 80px;
+    width: 500px;
+    height: auto;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 15px;
 }
 
 /* Form controls in the cart */
@@ -100,8 +103,8 @@ h1 {
 }
 
 .cart .total .num {
-    color: #28a745;
-    font-size: 1.6rem;
+    color: #009990;
+    font-size: 1.7rem;
 }
 
 /* Button Styling */
@@ -189,7 +192,6 @@ h1 {
     <h1>Your shopping cart</h1>
 
     <table class="cart">
-
         <tbody>
             {% for item in cart %}
                 {% with product=item.product %}
@@ -200,12 +202,12 @@ h1 {
                             </a>
                         </td>
                         <td>{{ product.name }}</td>
-                        <td> 
-                            <form action="{% url "cart:cart_add" product.id %}" method="post">
-                            {{ item.update_quantity_form.quantity }}
-                            {{ item.update_quantity_form.override }}
-                            <input type="submit" value="Update">
-                            {% csrf_token %}
+                        <td>
+                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                <!-- Fixed quantity to 1 by using a hidden input -->
+                                <input type="hidden" name="quantity" value="1">
+                                <!-- <input type="submit" value="Update"> -->
+                                {% csrf_token %}
                             </form>
                         </td>
                         <td>
@@ -214,22 +216,22 @@ h1 {
                                 {% csrf_token %}
                             </form>
                         </td>
-                        <td class="num">${{ item.price }}</td>
-                        <td class="num">${{ item.total_price }}</td>
+                        <td class="num">₹{{ item.price }}</td>
+                        <td class="num">₹{{ item.total_price }}</td>
                     </tr>
                 {% endwith %}
             {% endfor %}
             <tr class="total">
                 <td>Total</td>
                 <td colspan="4"></td>
-                <td class="num">${{ cart.get_total_price }}</td>
+                <td class="num">₹{{ cart.get_total_price }}</td>
             </tr>
         </tbody>
     </table>
 
     <p class="text-right">
         <a href="{% url 'shop:product_list' %}" class="button light">Continue shopping</a>
-        <a href="{% url "orders:order_create" %}" class="button">
+        <a href="{% url 'orders:order_create' %}" class="button">
             Checkout
         </a>
     </p>

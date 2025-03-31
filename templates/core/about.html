@@ -4,82 +4,102 @@
 {% block content %}
 
 <style>
-    /* Base styles */
-body {
+    body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+    background-color: #f5f7fa;
     color: #333;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 0;
 }
 
-/* About section */
 .about-section {
     text-align: center;
-    background-color: #e91e63;
+    background: #3e6b8e;
     color: white;
     padding: 50px 20px;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
-.about-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.about-section p {
-    font-size: 1.2rem;
-    margin: 0 auto;
-    max-width: 600px;
-}
-
-/* About content styles */
-/* Centering the .about-content */
 .about-content {
-    display: flex;
-    flex-direction: column; /* Stacks child elements vertically */
-    align-items: center;    /* Centers horizontally */
-    justify-content: center; /* Centers vertically if needed */
-    text-align: center;     /* Aligns text content to center */
-    margin: 20px auto;      /* Centers the element within the page */
+    max-width: 900px;
+    margin: 30px auto;
     padding: 20px;
-    max-width: 800px;       /* Sets a max width for readability */
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Contact Info Section */
+.contact-info {
+    text-align: center;
+    background: #fff;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-details {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.contact-details p {
+    margin: 10px 0;
+}
+
+.contact-details a {
+    color: #3e6b8e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #3e6b8e;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+button:hover {
+    background-color: #2b4f6e;
+}
 
 .content-section {
     margin-bottom: 30px;
+    text-align: center;
 }
 
-.content-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #e91e63;
-}
-
-.content-section p,
-.content-section ul {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.content-section ul {
-    padding-left: 20px;
-    list-style: disc;
-    margin-top: 10px;
-}
-
-/* Team section */
 .team {
     display: flex;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
     flex-wrap: wrap;
-    margin-top: 20px;
 }
 
 .team-member {
@@ -91,240 +111,124 @@ body {
     width: 100%;
     height: auto;
     border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.team-member h3 {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    color: #e91e63;
-}
-
-.team-member p {
-    font-size: 0.9rem;
-    color: #666;
-}
-
-/* Button styles */
-#scrollTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 10px 20px;
-    background-color: #e91e63;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
-}
-
-#scrollTopBtn:hover {
-    background-color: #d81b60;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .about-content {
-        padding: 20px;
-    }
-
-    .team {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .team-member {
-        max-width: 90%;
-    }
-}
-
-/* Base styles */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-/* About section */
-.about-section {
-    text-align: center;
-    background-color: #e91e63;
-    color: white;
-    padding: 50px 20px;
-}
-
-/* Testimonials */
 .testimonials {
     text-align: center;
+    background: skyblue;
     padding: 50px 20px;
-    background-color: #fff;
-}
-
-.testimonials h2 {
-    color: #e91e63;
+    border-radius: 15px;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
 .testimonial-cards {
     display: flex;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .testimonial-card {
-    background-color: #f9f9f9;
+    background: #f9f9f9;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     max-width: 300px;
-    text-align: left;
 }
 
-.testimonial-card p {
-    font-style: italic;
-    color: #666;
-}
-
-.testimonial-card h4 {
-    margin-top: 10px;
-    color: #e91e63;
-}
-
-/* Contact section */
-.contact-section {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f1f1f1;
-}
-
-.contact-section h2 {
-    color: #e91e63;
-    margin-bottom: 20px;
-}
-
-.contact-section form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-section input,
-.contact-section textarea {
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.contact-section button {
-    background-color: #e91e63;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.contact-section button:hover {
-    background-color: #d81b60;
-}
-
-
-/* Scroll to top button */
 #scrollTopBtn {
     display: none;
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 10px 20px;
-    background-color: #e91e63;
+    bottom: 110px;
+    right: 10px;
+    padding: 12px 20px;
+    font-size: 1.5rem;
+    background: #3e6b8e;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
-
-#scrollTopBtn:hover {
-    background-color: #d81b60;
-}
-
 
 </style>
 
 <div class="about-section">
-    <h1>About Flower Bouquets</h1>
-    <p>We are a premium online flower shop delivering a wide variety of floral arrangements to your doorsteps.</p>
+    <h1>Welcome to [Your Company Name]</h1>
+    <p>Your trusted partner in high-quality, affordable medical tourism services worldwide.</p>
 </div>
 
 <div class="about-content">
     <div class="content-section">
-        <h2>Our Story</h2>
-        <p>Flower Bouquets was founded in 2010 with the mission of spreading happiness through beautiful flower arrangements. Our goal is to provide fresh, high-quality bouquets that convey emotions and make moments special.</p>
+        <h2>Who We Are</h2>
+        <p>At [Your Company Name], we specialize in connecting international patients with **top-tier hospitals, expert doctors, and cost-effective medical treatments**. Our mission is to provide seamless healthcare solutions tailored to your needs.</p>
     </div>
     
     <div class="content-section">
-        <h2>Why Choose Us</h2>
+        <h2>Why Choose Us?</h2>
         <ul>
-            <li>Fresh flowers guaranteed</li>
-            <li>Same-day delivery</li>
-            <li>Unique and customizable arrangements</li>
-            <li>Eco-friendly packaging</li>
+            <li><strong>World-Class Medical Facilities:</strong> We collaborate with accredited hospitals and experienced specialists.</li>
+            <li><strong>Cost Savings:</strong> Get high-quality treatments at up to 70% lower costs than in Western countries.</li>
+            <li><strong>All-Inclusive Packages:</strong> We assist with **visa, accommodation, travel, and aftercare services**.</li>
+            <li><strong>Personalized Care:</strong> Our dedicated team provides **24/7 support** to ensure a smooth journey.</li>
         </ul>
     </div>
 
     <div class="content-section">
-        <h2>Meet Our Team</h2>
+        <h2>Meet Our Experts</h2>
         <div class="team">
             <div class="team-member">
-                <img src="{% static 'images/team1.jpg' %}" alt="Team Member 1">
-                <h3>Jane Doe</h3>
-                <p>Founder & CEO</p>
+                <img src="{% static 'images/team1.jpg' %}" alt="Dr. Emily Green">
+                <h3>Dr. Emily Green</h3>
+                <p>Medical Director | 20+ years of experience in international healthcare</p>
             </div>
             <div class="team-member">
-                <img src="{% static 'images/team2.jpg' %}" alt="Team Member 2">
-                <h3>Sarah Johnson</h3>
-                <p>Lead Florist</p>
+                <img src="{% static 'images/team2.jpg' %}" alt="John Doe">
+                <h3>John Doe</h3>
+                <p>Operations Manager | Expert in patient logistics and medical tourism</p>
             </div>
             <div class="team-member">
-                <img src="{% static 'images/team3.jpg' %}" alt="Team Member 3">
-                <h3>Robert James</h3>
-                <p>Operations Manager</p>
+                <img src="{% static 'images/team3.jpg' %}" alt="Alice Smith">
+                <h3>Alice Smith</h3>
+                <p>Patient Coordinator | Multilingual support specialist</p>
             </div>
         </div>
     </div>
 </div>
 
 <div class="testimonials">
-    <h2>What Our Customers Say</h2>
+    <h2>What Our Patients Say</h2>
     <div class="testimonial-cards">
         <div class="testimonial-card">
-            <p>"The flowers were absolutely stunning and delivered on time. Highly recommend!"</p>
-            <h4>- Emily R.</h4>
+            <p>"I saved over 60% on my knee surgery while receiving exceptional care. Highly recommended!"</p>
+            <h4>- Mark T.</h4>
         </div>
         <div class="testimonial-card">
-            <p>"Such a wide variety of arrangements to choose from. I loved the eco-friendly packaging!"</p>
-            <h4>- John D.</h4>
+            <p>"From airport pickup to hospital care, everything was professionally handled. Great experience!"</p>
+            <h4>- Rachel S.</h4>
         </div>
         <div class="testimonial-card">
-            <p>"Amazing service and fresh flowers. My go-to shop for all occasions."</p>
-            <h4>- Sophia M.</h4>
+            <p>"I never imagined I could afford top-quality dental implants. Thank you for changing my life!"</p>
+            <h4>- Alex B.</h4>
         </div>
     </div>
 </div>
 
-<div class="contact-section">
+<!-- Contact Information Section -->
+<div class="contact-info">
     <h2>Contact Us</h2>
-    <form action="/contact/" method="POST">
-        {% csrf_token %}
+    <p>Have questions? Our team is ready to assist you.</p>
+
+    <div class="contact-details">
+        <p><strong>📍 Address:</strong> 123 Medical Tourism St, Healthcare City, [Your Country]</p>
+        <p><strong>📞 Phone:</strong> <a href="tel:+1234567890">+1 234 567 890</a></p>
+        <p><strong>📧 Email:</strong> <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
+        <p><strong>🕒 Office Hours:</strong> Mon - Sat: 9 AM - 6 PM</p>
+    </div>
+
+    <!-- Updated Contact Form with ID -->
+    <form id="contactForm">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
@@ -332,23 +236,70 @@ body {
     </form>
 </div>
 
-<button id="scrollTopBtn">Top</button>
+
+<button id="scrollTopBtn">🢁</button>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
     const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-    window.onscroll = () => {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 100) {
             scrollTopBtn.style.display = "block";
         } else {
             scrollTopBtn.style.display = "none";
         }
-    };
+    });
 
-    scrollTopBtn.onclick = () => {
+    scrollTopBtn.addEventListener("click", function() {
         window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-</script>
+    });
+});
 
+document.addEventListener("DOMContentLoaded", function() {
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Collect form data
+            const formData = {
+                name: document.querySelector("input[name='name']").value,
+                email: document.querySelector("input[name='email']").value,
+                message: document.querySelector("textarea[name='message']").value,
+            };
+
+            // Send data via AJAX request
+            fetch("/send-contact-email/", {  // Update URL based on Django routing
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCSRFToken(),  // Function to get CSRF token
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Your message has been sent successfully!");
+                    contactForm.reset();
+                } else {
+                    alert("Error sending message: " + data.error);
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    }
+
+    // Function to get CSRF token from Django (Important for security)
+    function getCSRFToken() {
+        const csrfToken = document.cookie.split("; ").find(row => row.startsWith("csrftoken="));
+        return csrfToken ? csrfToken.split("=")[1] : "";
+    }
+});
+
+
+</script>
 
 {% endblock content %}

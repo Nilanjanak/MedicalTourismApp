@@ -2,8 +2,8 @@ from django.db import models
 from django.urls import reverse
 
 class Category(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
 
     class Meta:
         ordering = ['name']
@@ -21,6 +21,26 @@ class Category(models.Model):
             'shop:product_list_by_category', args=[self.slug]
         )
 
+# class Ocassion(models.Model):
+#     name = models.CharField(max_length=255)
+#     slug = models.SlugField(max_length=255, unique=True)
+
+#     class Meta:
+#         ordering = ['name']
+#         indexes = [
+#             models.Index(fields=['name']),
+#         ]
+#         verbose_name = 'ocassion'
+#         verbose_name_plural = 'ocassions'
+
+#     def __str__(self):
+#             return self.name
+
+#     def get_absolute_url(self):
+#             return reverse(
+#             'shop:product_list_by_ocassion', args=[self.slug]
+#         )
+
 
 class Product(models.Model):
     category = models.ForeignKey(
@@ -28,8 +48,13 @@ class Product(models.Model):
         related_name='products',
         on_delete=models.CASCADE
     )
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
+    # ocassion = models.ForeignKey(
+    #     Ocassion,
+    #     related_name='products',
+    #     on_delete=models.CASCADE
+    # )
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255)
     image = models.ImageField(
         upload_to='products/%Y/%m/%d',
         blank=True
@@ -53,4 +78,6 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
+
+
 
