@@ -1,11 +1,17 @@
 from django.urls import path
 from . import views
 from django.urls import path, include  # Add 'include' here
+from django.contrib import admin
+from django.urls import path, include
+from django.shortcuts import render, redirect
+from book_appointment.forms import BookingForm
 
 app_name = 'shop'
 
 urlpatterns = [
-    path('book/', include('bookings.urls')),  # Booking page
+    path('admin/', admin.site.urls),
+    path('book/', views.book_appointment_page, name='book_appointment_page'),
+    path('', include('book_appointment.urls')),  # Or whatever your app name is
     path('contact/', views.contact, name='contact'),
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path('refund-policy/', views.refund_policy, name='refund_policy'),

@@ -9,6 +9,8 @@ from django.shortcuts import render
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
+from book_appointment.forms import BookingForm
+
 
 # Predefined chatbot responses
 CHATBOT_RESPONSES = {
@@ -21,6 +23,10 @@ CHATBOT_RESPONSES = {
     "help": "I'm here to help! Please ask me any questions.",
     "bye": "Goodbye! Have a great day!",
 }
+
+def book_appointment_page(request):
+    form = BookingForm()
+    return render(request, 'book_appointment/booking_form.html', {'form': form})
 
 def chatbot_response(request):
     if request.method == "POST":
@@ -152,6 +158,8 @@ def city_page(request, city):
     template_name = template_mapping.get(city, 'shop/default_city.html')
     return render(request, template_name, {'city': city})
 
+def book_appointment_page(request):
+    return render(request, 'book_appointment/booking_form.html')
 
 def privacy_policy(request):
     return render(request, 'shop/privacy-policy.html')

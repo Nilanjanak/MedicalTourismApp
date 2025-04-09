@@ -852,7 +852,8 @@ footer {
         </nav>
     </header>
     
-    <a class="fixed-btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfRYjllDg7pyOpuaa75c9gNiJhgPHE5UqsgRoCTwlHwTnJSFg/viewform?usp=sharing">Book an Appointment</a>
+    <!-- <a class="fixed-btn" href="{% url 'shop:book_appointment_page' %}" id="book-btn">Book an Appointment</a> -->
+    <a class="fixed-btn" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSfRYjllDg7pyOpuaa75c9gNiJhgPHE5UqsgRoCTwlHwTnJSFg/viewform?usp=sharing" id="book-btn">Book an Appointment</a>
 
     <main>
         {% block content %}
