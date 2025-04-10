@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-CSRF_TRUSTED_ORIGINS = CSRF_TRUSTED_ORIGINS = [
+CSRF_TRUSTED_ORIGINS = [
   'http://localhost:8000',  # For local development using HTTP
     'http://0.0.0.0:8000',   # Also for local development
     'https://mycure360.com',  # For production or other trusted domains
