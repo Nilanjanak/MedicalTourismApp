@@ -26,9 +26,14 @@ SECRET_KEY = 'django-insecure-&%om-+ome253+a9n02dc1%m8aq&2e$a$=s1ao64v65g2+ojn_-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mycure360.com', 'www.mycure360.com', '127.0.0.1', 'localhost''mycure360.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://mycure360.com', 'http://mycure360.com']
+
+CSRF_TRUSTED_ORIGINS = CSRF_TRUSTED_ORIGINS = [
+  'http://localhost:8000',  # For local development using HTTP
+    'http://0.0.0.0:8000',   # Also for local development
+    'https://mycure360.com',  # For production or other trusted domains
+]
 
 # settings.py
 import os
