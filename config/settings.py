@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 CSRF_TRUSTED_ORIGINS = [
   'http://localhost:8000',  # For local development using HTTP
     'http://0.0.0.0:8000',   # Also for local development
@@ -39,7 +38,6 @@ CSRF_TRUSTED_ORIGINS = [
 import os
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "sk-220b8b1a649746da90ce97c0612f2986")  # Use environment variable for security
-
 
 # Application definition
 
