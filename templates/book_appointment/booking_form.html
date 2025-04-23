@@ -1,0 +1,19 @@
+<!-- templates/book_appointment/booking_form.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Book an Appointment</h2>
+    <form action="/your-name/" method="post">
+        {% csrf_token %}
+        <label for="your_name">Your name: </label>
+        <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+        <input type="submit" value="OK">
+    </form>
+    {% if form %}
+        <p>Form exists ✅</p>
+    {% else %}
+        <p>Form is missing ❌</p>
+    {% endif %}
+
+</div>
+{% endblock %}

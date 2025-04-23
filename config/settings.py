@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.cd
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,13 +26,18 @@ SECRET_KEY = 'django-insecure-&%om-+ome253+a9n02dc1%m8aq&2e$a$=s1ao64v65g2+ojn_-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mycure360.com', '13.201.134.94']
+
+CSRF_TRUSTED_ORIGINS = [
+  'http://localhost:8000',  # For local development using HTTP
+    'http://0.0.0.0:8000',   # Also for local development
+    'https://mycure360.com',  # For production or other trusted domains
+]
 
 # settings.py
 import os
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "sk-220b8b1a649746da90ce97c0612f2986")  # Use environment variable for security
-
 
 # Application definition
 
@@ -49,7 +55,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'accounts.apps.AccountsConfig',
-    
+    'book_appointment',
     'contact.apps.ContactConfig',
     'about.apps.AboutConfig',
 ]
@@ -73,7 +79,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +88,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
+                'core.context_processors.categories_context',  # 👈 add this line
             ],
         },
     },
@@ -99,6 +106,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# AWS_STORAGE_BUCKET_NAME = "mycure360-static"
+# AWS_S3_REGION_NAME = "your-region"
+# AWS_ACCESS_KEY_ID = "your-access-key"
+# AWS_SECRET_ACCESS_KEY = "your-secret-key"
+
+# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 # Password validation
@@ -139,6 +154,39 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+# For media files (uploaded content like logo or slider)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# For static files (CSS, JS, etc.)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # optional for collectstatic
+
+# AWS Credentials
+# AWS_STORAGE_BUCKET_NAME = "mycure360-static"
+# AWS_S3_REGION_NAME = "us-east-1"  # Replace with your actual AWS region
+# AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID", "your-access-key")
+# AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY", "your-secret-key")
+
+# # S3 Custom Domain (Optional: Use CloudFront if needed)
+# AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+# # Static Files (CSS, JavaScript, etc.)
+# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+
+# # Media Files (User uploads, images, etc.)
+# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+# MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+
+# Extra S3 settings
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400",
+}
+
+# Disable ACLs since we use "Bucket owner enforced"
+AWS_DEFAULT_ACL = None
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
