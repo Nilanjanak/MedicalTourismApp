@@ -1,4 +1,4 @@
-# FlowerBouquetApp
+# MedicalTourismApp
 
 start this project on local server
 

@@ -12,12 +12,22 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            /* padding: 50px; */
             background-color: #f8f8f8;
             color: #555;
         }
+        .comingsoon {
+            margin: 0 auto;
+            margin-bottom: 30px;
+            min-width: 550px;
+            min-height: 700px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            border-radius: 20px;
+        }
         h1 {
             font-size: 3em;
+            padding-top: 300px;
             margin-bottom: 20px;
         }
         p {
@@ -26,8 +36,10 @@
     </style>
 </head>
 <body>
-    <h1>Page Coming Soon</h1>
-    <p>We're working hard to bring this page to you. Stay tuned!</p>
+    <div class="comingsoon">
+        <h1>Page Coming Soon</h1>
+        <p>We're working hard to bring this page to you. Stay tuned!</p>
+    </div>
 </body>
 </html>
 {% endblock %}

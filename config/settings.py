@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project like this: BASE_DIR / 'subdir'.cd
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-&%om-+ome253+a9n02dc1%m8aq&2e$a$=s1ao64v65g2+ojn_-
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# settings.py
+import os
+
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "sk-220b8b1a649746da90ce97c0612f2986")  # Use environment variable for security
 
 
 # Application definition
